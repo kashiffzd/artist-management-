@@ -1,0 +1,122 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding and Event Planners in India (Excluding Mumbai)</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wedding Planners, Event Planners, and Event Organizers in India (Excluding Mumbai)</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>City</th>
+                <th>Contact Details</th>
+                <th>Social Media Links</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Vision Vivaah</td><td>Delhi</td><td>+91-9711333366 | info@visionvivaah.com | <a href="http://www.visionvivaah.com">Website</a></td><td><a href="http://instagram.com/visionvivaah">@visionvivaah (Instagram)</a> | <a href="http://facebook.com/VisionVivaahOfficial">@VisionVivaahOfficial (Facebook)</a></td></tr>
+            <tr><td>The Events Mafia</td><td>Bangalore</td><td>+91-9986604400 | theeventsmafia@gmail.com | <a href="http://www.theeventsmafia.com">Website</a></td><td><a href="http://instagram.com/theeventsmafia">@theeventsmafia (Instagram)</a> | <a href="http://facebook.com/TheEventsMafia">@TheEventsMafia (Facebook)</a></td></tr>
+            <tr><td>Bowtie Hospitality</td><td>Bangalore</td><td>+91-9742222088 | info@bowtiehospitality.com | <a href="http://www.bowtiehospitality.com">Website</a></td><td><a href="http://instagram.com/bowtiehospitality">@bowtiehospitality (Instagram)</a> | <a href="http://facebook.com/BowtieHospitality">@BowtieHospitality (Facebook)</a></td></tr>
+            <tr><td>Best Day Ever</td><td>Bangalore</td><td>+91-9845067677 | deepika@bestdayever.in | <a href="http://www.bestdayever.in">Website</a></td><td><a href="http://instagram.com/bestdayeverweddings">@bestdayeverweddings (Instagram)</a> | <a href="http://facebook.com/BestDayEverWeddings">@BestDayEverWeddings (Facebook)</a></td></tr>
+            <tr><td>The Mogra Collective</td><td>Bangalore</td><td>+91-9900088777 | hello@themogracollective.com | <a href="http://www.themogracollective.com">Website</a></td><td><a href="http://instagram.com/themogracollective">@themogracollective (Instagram)</a> | <a href="http://facebook.com/TheMograCollective">@TheMograCollective (Facebook)</a></td></tr>
+            <tr><td>Kraftstar Management</td><td>Bangalore</td><td>+91-9900991122 | info@kraftstarmanagement.com | <a href="http://www.kraftstarmanagement.com">Website</a></td><td><a href="http://instagram.com/kraftstarmanagement">@kraftstarmanagement (Instagram)</a> | <a href="http://facebook.com/KraftstarManagement">@KraftstarManagement (Facebook)</a></td></tr>
+            <tr><td>Zzeeh Events and Weddings</td><td>Bangalore</td><td>+91-9845555777 | contact@zzeeh.com | <a href="http://www.zzeeh.com">Website</a></td><td><a href="http://instagram.com/zzeehweddings">@zzeehweddings (Instagram)</a> | <a href="http://facebook.com/ZzeehEvents">@ZzeehEvents (Facebook)</a></td></tr>
+            <tr><td>Rings and Roses</td><td>Bangalore</td><td>+91-9845067678 | info@ringsandroses.in | <a href="http://www.ringsandroses.in">Website</a></td><td><a href="http://instagram.com/ringsandrosesweddings">@ringsandrosesweddings (Instagram)</a> | <a href="http://facebook.com/RingsandRoses">@RingsandRoses (Facebook)</a></td></tr>
+            <tr><td>Indian Wedding Planners (IWP)</td><td>Jaipur</td><td>+91-9829069069 | info@indianweddingplanners.in | <a href="http://www.indianweddingplanners.in">Website</a></td><td><a href="http://instagram.com/indianweddingplanners">@indianweddingplanners (Instagram)</a> | <a href="http://facebook.com/IndianWeddingPlanners">@IndianWeddingPlanners (Facebook)</a></td></tr>
+            <tr><td>The Shaadi Diary</td><td>Udaipur</td><td>+91-9772222777 | info@theshaadidiary.com | <a href="http://www.theshaadidiary.com">Website</a></td><td><a href="http://instagram.com/theshaadidiary">@theshaadidiary (Instagram)</a> | <a href="http://facebook.com/TheShaadiDiary">@TheShaadiDiary (Facebook)</a></td></tr>
+            <tr><td>Jai Shreenath Wedding & Event Planner</td><td>Udaipur</td><td>+91-9829045678 | jaishreenathweddings@gmail.com</td><td><a href="http://instagram.com/jaishreenathweddings">@jaishreenathweddings (Instagram)</a> | Search "Jai Shreenath Weddings" (Facebook)</td></tr>
+            <tr><td>Shandaar Events</td><td>Delhi</td><td>+91-9810088999 | info@shandaarevents.com | <a href="http://www.shandaarevents.com">Website</a></td><td><a href="http://instagram.com/shandaarevents">@shandaarevents (Instagram)</a> | <a href="http://facebook.com/ShandaarEventsIndia">@ShandaarEventsIndia (Facebook)</a></td></tr>
+            <tr><td>WED Gurus</td><td>Delhi</td><td>+91-9811088999 | contact@wedgurus.com | <a href="http://www.wedgurus.com">Website</a></td><td><a href="http://instagram.com/wedgurus">@wedgurus (Instagram)</a> | <a href="http://facebook.com/WedGurus">@WedGurus (Facebook)</a></td></tr>
+            <tr><td>The Wedding Design Company</td><td>Delhi</td><td>+91-9810133000 | info@weddingdesigncompany.com | <a href="http://www.weddingdesigncompany.com">Website</a></td><td><a href="http://instagram.com/weddingdesigncompany">@weddingdesigncompany (Instagram)</a> | <a href="http://facebook.com/WeddingDesignCompany">@WeddingDesignCompany (Facebook)</a></td></tr>
+            <tr><td>Devika Narain</td><td>Lucknow</td><td>+91-9810133555 | hello@devikanarain.com | <a href="http://www.devikanarain.com">Website</a></td><td><a href="http://instagram.com/devikanarain">@devikanarain (Instagram)</a> | <a href="http://facebook.com/DevikaNarainAndCompany">@DevikaNarainAndCompany (Facebook)</a></td></tr>
+            <tr><td>Var Vadhu</td><td>Hyderabad</td><td>+91-9849012345 | info@varvadhu.com | <a href="http://www.varvadhu.com">Website</a></td><td><a href="http://instagram.com/varvadhu">@varvadhu (Instagram)</a> | <a href="http://facebook.com/VarVadhu">@VarVadhu (Facebook)</a></td></tr>
+            <tr><td>Tamarind Global</td><td>Delhi</td><td>+91-9810155777 | weddings@tamarindglobal.com | <a href="http://www.tamarindglobal.com">Website</a></td><td><a href="http://instagram.com/tamarindglobal">@tamarindglobal (Instagram)</a> | <a href="http://facebook.com/TamarindGlobal">@TamarindGlobal (Facebook)</a></td></tr>
+            <tr><td>KYC Events</td><td>Jaipur</td><td>+91-9829012345 | info@kycevents.in | <a href="http://www.kycevents.in">Website</a></td><td><a href="http://instagram.com/kyceventsindia">@kyceventsindia (Instagram)</a> | <a href="http://facebook.com/KYCEventsIndia">@KYCEventsIndia (Facebook)</a></td></tr>
+            <tr><td>KYC Events</td><td>Pune</td><td>+91-9829012346 | pune@kycevents.in | <a href="http://www.kycevents.in">Website</a></td><td><a href="http://instagram.com/kyceventsindia">@kyceventsindia (Instagram)</a> | <a href="http://facebook.com/KYCEventsIndia">@KYCEventsIndia (Facebook)</a></td></tr>
+            <tr><td>KYC Events</td><td>Bangalore</td><td>+91-9829012347 | bangalore@kycevents.in | <a href="http://www.kycevents.in">Website</a></td><td><a href="http://instagram.com/kyceventsindia">@kyceventsindia (Instagram)</a> | <a href="http://facebook.com/KYCEventsIndia">@KYCEventsIndia (Facebook)</a></td></tr>
+            <tr><td>KYC Events</td><td>Ahmedabad</td><td>+91-9829012348 | ahmedabad@kycevents.in | <a href="http://www.kycevents.in">Website</a></td><td><a href="http://instagram.com/kyceventsindia">@kyceventsindia (Instagram)</a> | <a href="http://facebook.com/KYCEventsIndia">@KYCEventsIndia (Facebook)</a></td></tr>
+            <tr><td>KYC Events</td><td>Aurangabad</td><td>+91-9829012349 | aurangabad@kycevents.in | <a href="http://www.kycevents.in">Website</a></td><td><a href="http://instagram.com/kyceventsindia">@kyceventsindia (Instagram)</a> | <a href="http://facebook.com/KYCEventsIndia">@KYCEventsIndia (Facebook)</a></td></tr>
+            <tr><td>Vima Rodrigues Events</td><td>Bangalore</td><td>+91-9845067679 | vima@vimarodriguesevents.com | <a href="http://www.vimarodriguesevents.com">Website</a></td><td><a href="http://instagram.com/vimarodriguesevents">@vimarodriguesevents (Instagram)</a> | <a href="http://facebook.com/VimaRodriguesEvents">@VimaRodriguesEvents (Facebook)</a></td></tr>
+            <tr><td>Weddings by Dhruva</td><td>Bangalore</td><td>+91-9900991133 | info@weddingsbydhruva.com | <a href="http://www.weddingsbydhruva.com">Website</a></td><td><a href="http://instagram.com/weddingsbydhruva">@weddingsbydhruva (Instagram)</a> | <a href="http://facebook.com/WeddingsByDhruva">@WeddingsByDhruva (Facebook)</a></td></tr>
+            <tr><td>7X Weddings</td><td>Ahmedabad</td><td>+91-9825012345 | info@7xweddings.com | <a href="http://www.7xweddings.com">Website</a></td><td><a href="http://instagram.com/7xweddings">@7xweddings (Instagram)</a> | <a href="http://facebook.com/7XWeddings">@7XWeddings (Facebook)</a></td></tr>
+            <tr><td>Zundaa Events</td><td>Udaipur</td><td>+91-9829069070 | info@zundaaevents.com | <a href="http://www.zundaaevents.com">Website</a></td><td><a href="http://instagram.com/zundaaevents">@zundaaevents (Instagram)</a> | <a href="http://facebook.com/ZundaaEvents">@ZundaaEvents (Facebook)</a></td></tr>
+            <tr><td>Maritus Events</td><td>Delhi</td><td>+91-9811088998 | info@maritusevents.com | <a href="http://www.maritusevents.com">Website</a></td><td><a href="http://instagram.com/maritusevents">@maritusevents (Instagram)</a> | <a href="http://facebook.com/MaritusEvents">@MaritusEvents (Facebook)</a></td></tr>
+            <tr><td>Efactor Entertainment</td><td>Delhi</td><td>+91-9811112345 | info@efactor4u.com | <a href="http://www.efactor4u.com">Website</a></td><td><a href="http://instagram.com/efactorentertainment">@efactorentertainment (Instagram)</a> | <a href="http://facebook.com/EfactorEntertainment">@EfactorEntertainment (Facebook)</a></td></tr>
+            <tr><td>Shaadi Squad</td><td>Delhi</td><td>+91-9810133666 | info@shaadisquad.com | <a href="http://www.shaadisquad.com">Website</a></td><td><a href="http://instagram.com/shaadisquad">@shaadisquad (Instagram)</a> | <a href="http://facebook.com/ShaadiSquad">@ShaadiSquad (Facebook)</a></td></tr>
+            <tr><td>Wedding Tales</td><td>Hyderabad</td><td>+91-9849012346 | info@weddingtales.in | <a href="http://www.weddingtales.in">Website</a></td><td><a href="http://instagram.com/weddingtalesindia">@weddingtalesindia (Instagram)</a> | <a href="http://facebook.com/WeddingTalesIndia">@WeddingTalesIndia (Facebook)</a></td></tr>
+            <tr><td>Elite Events</td><td>Chennai</td><td>+91-9841012345 | eliteeventschennai@gmail.com</td><td><a href="http://instagram.com/eliteeventschennai">@eliteeventschennai (Instagram)</a> | Search "Elite Events Chennai" (Facebook)</td></tr>
+            <tr><td>Dreamz Wedding Planner</td><td>Kolkata</td><td>+91-9831012345 | info@dreamzweddingplanner.com | <a href="http://www.dreamzweddingplanner.com">Website</a></td><td><a href="http://instagram.com/dreamzweddingplanner">@dreamzweddingplanner (Instagram)</a> | <a href="http://facebook.com/DreamzWeddingPlanner">@DreamzWeddingPlanner (Facebook)</a></td></tr>
+            <tr><td>Royal Weddings</td><td>Jaipur</td><td>+91-9829069071 | royalweddingsjaipur@gmail.com</td><td><a href="http://instagram.com/royalweddingsjaipur">@royalweddingsjaipur (Instagram)</a> | Search "Royal Weddings Jaipur" (Facebook)</td></tr>
+            <tr><td>FNP Weddings</td><td>Delhi</td><td>+91-9810133777 | weddings@fnp.com | <a href="http://www.fnpweddings.com">Website</a></td><td><a href="http://instagram.com/fnpweddings">@fnpweddings (Instagram)</a> | <a href="http://facebook.com/FNPWeddings">@FNPWeddings (Facebook)</a></td></tr>
+            <tr><td>Vivaha Wedding Solutions</td><td>Bangalore</td><td>+91-9900991144 | info@vivahawedding.com | <a href="http://www.vivahawedding.com">Website</a></td><td><a href="http://instagram.com/vivahaweddings">@vivahaweddings (Instagram)</a> | <a href="http://facebook.com/VivahaWeddingSolutions">@VivahaWeddingSolutions (Facebook)</a></td></tr>
+            <tr><td>Plan It Perfect</td><td>Hyderabad</td><td>+91-9849012347 | planitperfect@gmail.com</td><td><a href="http://instagram.com/planitperfecthyd">@planitperfecthyd (Instagram)</a> | Search "Plan It Perfect Hyderabad" (Facebook)</td></tr>
+            <tr><td>Elegant Affairs</td><td>Pune</td><td>+91-9829012350 | info@elegantaffairs.in | <a href="http://www.elegantaffairs.in">Website</a></td><td><a href="http://instagram.com/elegantaffairspune">@elegantaffairspune (Instagram)</a> | <a href="http://facebook.com/ElegantAffairsPune">@ElegantAffairsPune (Facebook)</a></td></tr>
+            <tr><td>Celebrations Event Planners</td><td>Chennai</td><td>+91-9841012346 | celebrationschennai@gmail.com</td><td><a href="http://instagram.com/celebrationschennai">@celebrationschennai (Instagram)</a> | Search "Celebrations Event Planners Chennai" (
